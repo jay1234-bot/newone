@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGh5MmY3cHF5YnkwZHNuNXlqM3VueHp5MjM3eWV0dTE5b3BmMjZvYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6dKRKMubZffyg/giphy.gif') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    width: 50%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    color: black;
+    background: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff4b2b, 0 0 15px #ff416c;
+    }
+    to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff4b2b, 0 0 30px #ff416c;
+    }
+}
+
+#chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.user {
+    align-items: flex-end;
+}
+
+.message-bubble {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 75%;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 16px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease-in-out;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.user .message-bubble {
+    background: rgba(0, 132, 255, 0.8);
+    color: white;
+    align-self: flex-end;
+    box-shadow: 0 0 8px rgba(0, 132, 255, 0.8);
+}
+
+.ai .message-bubble {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    align-self: flex-start;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.timestamp {
+    font-size: 12px;
+    color: lightgray;
+    position: absolute;
+    bottom: -15px;
+    right: 5px;
+    font-style: italic;
+}
+
+.input-container {
+    display: flex;
+    padding-top: 10px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+#user-input::placeholder {
+    color: lightgray;
+}
+
+#send-button {
+    margin-left: 10px;
+    padding: 12px 20px;
+    border: none;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 0, 102, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+#send-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, rgba(255,255,255,0) 80%);
+    transition: all 0.6s ease-out;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+#send-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#send-button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 0, 102, 0.6);
+}
+
+#send-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(255, 0, 102, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
